@@ -1,0 +1,15 @@
+<h1>PostTypes#new</h1>
+<p>Find me in app/views/post_types/new.html.erb</p>
+<%= form_for @post_type, url:create_post_type_path, method:"post" do |f| %>
+  <div class="field">
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :image %><br>
+    <%= f.file_field :image %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
