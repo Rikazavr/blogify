@@ -1,11 +1,10 @@
 
 class PostsController < ApplicationController
   before_action :set_post, only: [:show, :edit, :update, :destroy]
+  before_action :sidebar, only: [:home, :by_tag, :by_category, :show]
 
   def home
     @posts = Post.all
-    @tags = Tag.all
-    @categories = Category.all
     render 'home/index'
   end
 
@@ -17,8 +16,6 @@ class PostsController < ApplicationController
 
   def by_category
     @posts = Category.find_by(slug:params[:slug]).posts
-    @tags = Tag.all
-    @categories = Category.all
     render 'home/index'
   end
 
@@ -55,7 +52,7 @@ class PostsController < ApplicationController
         format.html { redirect_to @post, notice: 'Post was successfully created.' }
         format.json { render action: 'show', status: :created, location: @post }
       else
-        format.html { render action: 'new' }
+        format.html { render action: 'new', layout: 'admin' }
         format.json { render json: @post.errors, status: :unprocessable_entity }
       end
     end
@@ -102,9 +99,13 @@ class PostsController < ApplicationController
     def set_post
       @post = Post.find(params[:id])
     end
+    def sidebar
+      @tags = Tag.all
+      @categories = Category.all
+    end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def post_params
-      params.require(:post).permit(:title, :image, :date, :text, :post_type_id)
+      params.require(:post).permit(:title, :image, :date, :text, :post_type_id, :preview)
     end
 end

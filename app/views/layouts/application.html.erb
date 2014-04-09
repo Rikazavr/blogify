@@ -8,8 +8,27 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+<div class="wrapper">
+  <div class="main">
+    <%= render 'home/nav' %>
+    <%= yield %>
+    <footer><p class="gray">Blogify is a personal blog theme with a clean & flat design.</p><br><p class="gray">Copyright © 2013 SuitsTheme</p><div class="line"></div></footer>
+        <div class="meh">
+          <a href="#" class="icon"><%= image_tag("vimeo.png")%></a>
+          <a href="#" class="icon"><img src="images/vimeo.png"></a>
+          <a href="#" class="icon"><%= image_tag("vimeo.png")%></a>
+          <a href="#" class="icon"><img src="images/vimeo.png"></a>
+          <a href="#" class="icon"><%= image_tag("vimeo.png")%></a>
+          <a href="#" class="icon"><img src="images/vimeo.png"></a>
+          <a href="#" class="icon"><%= image_tag("vimeo.png")%></a>
+          <a href="#" class="icon"><img src="images/vimeo.png"></a>
+          <a href="#" class="icon"><img src="images/vimeo.png"></a>
+          <a href="#" class="icon"><img src="images/vimeo.png"></a>
+        </div>
+  </div>
+  <%= render 'home/aside' %>
+</div>
 
-<%= yield %>
 
 </body>
 </html>

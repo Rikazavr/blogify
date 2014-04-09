@@ -279,6 +279,34 @@ h2{
 	margin-top:40px;
 }
 
+#comments{
+	border:1px solid #cccccc;
+	height: auto;
+	padding: 30px 90px 30px 90px;
+	margin-top: -90px;
+}
+
+#comments ul,#comments li{
+	display: block;
+}
+
+#comment-form{
+	font-size: 16px;
+}
+
+.answer-to-comment{
+	width: 70px;
+	height: 25px;
+	line-height: 25px;
+	text-align: center;
+	border:none;
+	border-radius: 5px;
+	background-color: #fff;
+	font-size: 12px;
+	padding:0px;
+	margin: 10px;
+}
+
 .quote-post{
 	width: 720px;
 	height: 138px;
@@ -307,7 +335,7 @@ h2{
 
 aside{
 	width: 300px;
-	height: 5265px;
+	height: auto;
 	padding: 0px 40px 40px 40px;
 	background-color: #333333;
 	float: right;

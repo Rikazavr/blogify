@@ -6,4 +6,5 @@ class Post < ActiveRecord::Base
   has_many :tags, through: :tag_associations
   has_many :cat_associations
   has_many :categories, through: :cat_associations
+  has_many :comments
 end

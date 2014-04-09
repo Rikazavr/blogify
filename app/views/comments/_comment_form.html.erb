@@ -1,0 +1,13 @@
+<%= form_tag('/comments/create', method:'post', remote: true, id: 'comment-form') do %> 
+  <p>
+    Author:
+    <%= text_field_tag 'author' %>
+  </p>
+  <p>
+    Comment:
+    <%= text_field_tag 'comment' %>
+  </p>
+  <%= hidden_field_tag 'post_id', @post.id%>
+  <%= hidden_field_tag 'parent_id', 0, id:'parent-comment-id' %>
+  <%= submit_tag 'post' %>
+<% end %>

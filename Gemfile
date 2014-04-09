@@ -5,11 +5,13 @@ gem 'rails', '4.0.3'
 
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'
-
+gem 'yaml_db', github: 'jetthoughts/yaml_db', ref: 'fb4b6bd7e12de3cffa93e0a298a1e5253d7e92ba'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
 
 gem 'paperclip'
+gem 'ckeditor'
+gem 'ancestry'
 
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'

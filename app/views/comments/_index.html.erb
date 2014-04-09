@@ -1,0 +1,5 @@
+<ul id="comments">
+  <% @post.comments.each do |comment| %>
+    <%= raw render_subcomments comment if comment.is_root? %>
+  <% end %>
+</ul>

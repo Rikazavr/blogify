@@ -2,6 +2,7 @@ Blogify::Application.routes.draw do
   
 
 
+  mount Ckeditor::Engine => '/ckeditor'
   get "post_types/new", to:"post_types#new"
   post "post_types/create", to:"post_types#create", as:"create_post_type"
   get "tags/new", to:"tags#new"
@@ -10,6 +11,8 @@ Blogify::Application.routes.draw do
   get "categories/new", to:"categories#new"
   post "categories/create", to:"categories#create", as:"create_category"
   get "categories/:slug", to:"posts#by_category", as:"by_category"
+
+  post "comments/create", to:"comments#create"
 
   resources :categories
   resources :posts
