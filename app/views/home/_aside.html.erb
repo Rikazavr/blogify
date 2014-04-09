@@ -21,26 +21,16 @@
       <p class="gray">Our server maintenance is now done, so Envato Support should be working as normal now. If you see any problems please tweet <a href="#">@envato_support</a></p>
     </div>
         <h2>Popular posts</h2>
-    <div class="popular-posts">
-      <p class="green">22 August, 2013</p><p class="gray">Post with a Featured Image</p>
-        </div>
-        <div class="popular-posts">
-      <a href="#"><%= image_tag("p.png", class:"small-image")%></a>
-      <p class="green">22 August, 2013</p><p class="gray">Post with a Featured Image</p>
-        </div>
-        <div class="popular-posts">
-      <a href="#"><%= image_tag("p.png", class:"small-image")%></a>
-      <p class="green">22 August, 2013</p><p class="gray">Post with a Featured Image</p>
-        </div>
-        <div class="popular-posts">
-      <a href="#"><%= image_tag("p.png", class:"small-image")%></a>
-      <p class="green">22 August, 2013</p><p class="gray">Post with a Featured Image</p>
-        </div>
-        <div class="popular-posts">
-      <a href="#"><%= image_tag("p.png", class:"small-image")%></a>
-      <p class="green">22 August, 2013</p><p class="gray">Post with a Featured Image</p>
-        </div>
-
+          <% @pop.each do |pop| %>
+            <div class="popular-posts">
+              <%= link_to post_path(pop) do %>
+              <%= image_tag(pop.image.url(), class:"small-image")%>
+              <% end %>
+              <p class="green"><%= l pop.date, :format => :long %></p>
+              <p class="gray"><%= pop.title %></p>
+            </div>
+          <% end %>
+        
           <h2>Recent Comments</h2>
           <div class="recent-comments">
               <a href="#"><%= image_tag("dude.jpg", class:"small-image")%></a>

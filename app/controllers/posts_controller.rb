@@ -29,6 +29,9 @@ class PostsController < ApplicationController
   # GET /posts/1
   # GET /posts/1.json
   def show
+    @post.view_count = @post.view_count || 0
+    @post.view_count = @post.view_count + 1
+    @post.save
   end
 
   # GET /posts/new
@@ -102,6 +105,7 @@ class PostsController < ApplicationController
     def sidebar
       @tags = Tag.all
       @categories = Category.all
+      @pop = Post.all.order("view_count desc").limit(4)
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

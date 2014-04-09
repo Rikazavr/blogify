@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140403071053) do
+ActiveRecord::Schema.define(version: 20140409084342) do
 
   create_table "cat_associations", force: true do |t|
     t.integer  "category_id"
@@ -79,6 +79,7 @@ ActiveRecord::Schema.define(version: 20140403071053) do
     t.datetime "updated_at"
     t.integer  "post_type_id"
     t.text     "preview"
+    t.integer  "view_count"
   end
 
   add_index "posts", ["post_type_id"], name: "index_posts_on_post_type_id"
