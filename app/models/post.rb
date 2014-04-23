@@ -7,4 +7,5 @@ class Post < ActiveRecord::Base
   has_many :cat_associations
   has_many :categories, through: :cat_associations
   has_many :comments
+  self.per_page = 5
 end

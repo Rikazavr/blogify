@@ -2,7 +2,6 @@
   <% @posts.each do |post| %>
 		<div class="post">
 			<%= image_tag(post.image.url()) %>
-			
       <%= link_to post, class:'title' do %>
         <h2><%= post.title %></h2>
       <% end %>
@@ -20,16 +19,33 @@
           <% end %>
         </div>
         <p class="gray"><%= post.preview %></p>
-        <%= link_to 'Read more', post, class:'more'  %>
+        <%= link_to 'Read more', post, class:'more' %>
 		</div>
   <% end %>
 	<div class="quote-post"><p class="thin">Curabitur aliquam euismod purus, vela fermentum mattis. Nunc ac quam in est aliquet pretium. Integer semper, tortor ne mattis euismod, maecenas vitae lacus massa.</p><p>-- Salvador Dali</p>
 	</div>
-
 	<div class="link-post"><a href="#"><p class="gray">http://www.themeforest.net/user/SuitsTheme</p></a></div>
 
 	<div class="pagination">
-		<a href="#" class="page-active"><=</a><div class="numbers"><a href="#" class="page">1</a><a href="#" class="page-active">2</a><a href="#" class="page">3</a></div><a href="#" class="right">=></a>
+    <% if @posts.current_page == 1 %>
+      <%= link_to '<=', "#", class: 'page-active' %>
+    <% else %>
+      <%= link_to '<=', "/?page=#{@posts.current_page-1}", class: 'page' %>
+    <% end %>
+    <div class="numbers">
+    <% (1..@posts.total_pages).to_a.each do |i| %>
+      <% if i == @posts.current_page %>
+        <%= link_to i, "/?page=#{i}", class: 'page-active' %>
+      <% else %>
+        <%= link_to i, "/?page=#{i}", class: 'page' %>
+      <% end %>
+    <% end %>
+    </div>
+    <% if @posts.current_page == @posts.total_pages %>
+      <%= link_to '=>', "#", class: 'page-active right' %>
+    <% else %>
+      <%= link_to '=>', "/?page=#{@posts.current_page+1}", class: 'right page' %>
+    <% end %>
 	</div>
 </div>
     

@@ -1,71 +1,84 @@
 <aside>
-    <div>
-        <h2>Categories</h2>
-<% @categories.each do |cat| %>
-  <%= link_to by_category_path(slug:cat.slug), class:"categories" do %>
-    <%= cat.name %>
-    <span class="categoties-number">
-        <%= cat.posts.count %>
-    </span>
-  <% end %>
-<% end %>
+  <div>
+    <h2>Categories</h2>
+    <% @categories.each do |cat| %>
+      <%= link_to by_category_path(slug:cat.slug), class:"categories" do %>
+      <%= cat.name %>
+      <span class="categoties-number">
+          <%= cat.posts.count %>
+      </span>
+      <% end %>
+    <% end %>
+  </div>
+<!-- ======================================================Dribble============================= -->
     <div class="dribble">
-        </div>
       <h2>Dribble</h2>
       <a href="#"><%= image_tag("rocket.png", class:"middle-img") %></a>
     </div>
-    <div class="twitter">
+<!-- ======================================================Twitter============================= -->
       <h2>Twitter</h2>
-      <p class="gray">The State of #WordPress Themes: 87% of all WordPress theme shops sell themes on Themeforest <a href="#">http://supportdash.com/wordpress</a></p></br>
-      <p class="gray">What Are the Most Inspiring Envato Marketplace Moments of All Time? <a href="#">http://enva.to/15c3faP</a></p></br>
-      <p class="gray">Our server maintenance is now done, so Envato Support should be working as normal now. If you see any problems please tweet <a href="#">@envato_support</a></p>
-    </div>
-        <h2>Popular posts</h2>
-          <% @pop.each do |pop| %>
-            <div class="popular-posts">
-              <%= link_to post_path(pop) do %>
-              <%= image_tag(pop.image.url(), class:"small-image")%>
-              <% end %>
-              <p class="green"><%= l pop.date, :format => :long %></p>
-              <p class="gray"><%= pop.title %></p>
-            </div>
+      <% @tweets.each do |tweet| %>
+        <div class="twit">
+          <p class="gray">
+            <%= tweet.text %> 
+          </p>
+          <%= link_to tweet.user.name, tweet.user.url.to_s %>
+        </div>
+      <% end %>
+<!--  <p class="gray">
+        What Are the Most Inspiring Envato Marketplace Moments of All Time? 
+        <a href="#">http://enva.to/15c3faP</a>
+      </p>
+      <p class="gray">
+        Our server maintenance is now done, so Envato Support should be working as normal now. If you see any problems please tweet 
+        <a href="#">@envato_support</a>
+      </p> -->
+<!-- ======================================================Pop posts============================= -->
+    <h2>Popular posts</h2>
+      <% @pop.each do |pop| %>
+        <div class="popular-posts">
+          <%= link_to post_path(pop) do %>
+          <%= image_tag(pop.image.url(), class:"small-image")%>
           <% end %>
-        
-          <h2>Recent Comments</h2>
-          <div class="recent-comments">
-              <a href="#"><%= image_tag("dude.jpg", class:"small-image")%></a>
-        <a href="#"><p class="green">Harry Kewell</p></a><p class="gray">Pellentesque eget venenatis ipsum. In quis turpis in turpis faucibus...</p>
-            </div>
-      <div class="recent-comments">
-              <a href="#"><%= image_tag("dude.jpg", class:"small-image")%></a>
-        <a href="#"><p class="green">Harry Kewell</p></a><p class="gray">Pellentesque eget venenatis ipsum. In quis turpis in turpis faucibus...</p>
-            </div>
-            <div class="recent-comments">
-              <a href="#"><%= image_tag("dude.jpg", class:"small-image")%></a>
-        <a href="#"><p class="green">Harry Kewell</p></a><p class="gray">Pellentesque eget venenatis ipsum. In quis turpis in turpis faucibus...</p>
-            </div>
-        <div class="widget">
-          <h2>FLICKR WIDGET</h2>
-      <a href="#"><img src="images/flkr.jpg" class="middle-img"></a>
-    </div>
-        <div class="tags">
-          <h2>TAGS </h2>
-          <% @tags.each do |tag| %>
-            <%= link_to tag.name, by_tag_path(slug:tag.slug), class:"tag" %>
+          <p class="green"><%= l pop.date, :format => :long %></p>
+          <p class="gray"><%= pop.title %></p>
+        </div>
+      <% end %>
+<!-- ======================================================Rec comments============================= -->
+    <h2>Recent Comments</h2>
+      <% @recent_comments.each do |rec| %>
+        <div class="recent-comments">
+          <%= link_to '#' do %>
+          <%= image_tag("dude.jpg", class:"small-image")%>
           <% end %>
-      </div>
-      <div class="about">
-          <h2>About blogıfy</h2>
-          <p class="gray">Nam nec tellus a odio tincidunt auctor a ornare odio. Sed non  mauris vitae erat consequat auctor eu in elit. Sed non neque elit. Sed ut imperdiet nisi. Proin condimentum fermentum nunc. Etiam pharetra, erat sed fermentum feugiat, velit mauris egestas quam, ut aliquam massa nisl quis neque suspendisse in orci enim.</p>
-      </div>
-      <div class="social">
-          <h2>keep social</h2>
-        <a href="#" class="aside-icons"><%= image_tag("f.png")%></a><a href="#" class="aside-icons"><%= image_tag("f.png")%></a><a href="#" class="aside-icons"><%= image_tag("f.png")%></a><a href="#" class="aside-icons"><%= image_tag("f.png")%></a><a href="#" class="aside-icons"><%= image_tag("f.png")%></a><a href="#" class="aside-icons"><%= image_tag("f.png")%></a><a href="#" class="aside-icons"><%= image_tag("f.png")%></a><a href="#" class="aside-icons"><%= image_tag("f.png")%></a><a href="#" class="aside-icons"><%= image_tag("f.png")%></a><a href="#" class="aside-icons"><%= image_tag("f.png")%></a>
-      </div>
-      <div>
-          <h2>search</h2>
-        <form action="URL"><input class="aside-search" placeholder="Search.." type="text"> <input class="aside-submit" type="submit"></form>
-      </div>
-      <div class="advertisement">
-      </div>  
-     </aside>
+          <p class="green"><%= rec.author %></p>
+          <p class="gray"><%= rec.comment %></p>
+        </div>
+      <% end %>
+<!-- ====================================================== tags ============================= -->
+    <div class="tags">
+      <h2>TAGS </h2>
+      <% @tags.each do |tag| %>
+        <%= link_to tag.name, by_tag_path(slug:tag.slug), class:"tag" %>
+      <% end %>
+    </div>
+<!-- ====================================================== about ============================= -->
+    <div class="about">
+      <h2>About blogıfy</h2>
+      <p class="gray">Nam nec tellus a odio tincidunt auctor a ornare odio. Sed non  mauris vitae erat consequat auctor eu in elit. Sed non neque elit. Sed ut imperdiet nisi. Proin condimentum fermentum nunc. Etiam pharetra, erat sed fermentum feugiat, velit mauris egestas quam, ut aliquam massa nisl quis neque suspendisse in orci enim.</p>
+    </div>
+<!-- ====================================================== social ============================= -->
+    <div class="social">
+      <h2>keep social</h2>
+      <a href="#" class="aside-icons"><%= image_tag("f.png")%></a><a href="#" class="aside-icons"><%= image_tag("f.png")%></a><a href="#" class="aside-icons"><%= image_tag("f.png")%></a><a href="#" class="aside-icons"><%= image_tag("f.png")%></a><a href="#" class="aside-icons"><%= image_tag("f.png")%></a><a href="#" class="aside-icons"><%= image_tag("f.png")%></a><a href="#" class="aside-icons"><%= image_tag("f.png")%></a><a href="#" class="aside-icons"><%= image_tag("f.png")%></a><a href="#" class="aside-icons"><%= image_tag("f.png")%></a><a href="#" class="aside-icons"><%= image_tag("f.png")%></a>
+    </div>
+    <div>
+      <h2>search</h2>
+      <%= form_tag("/search", method: "get") do %>
+      <%= text_field_tag(:q, '',{ class:'aside-search', placeholder: 'Search...' }) %>
+      <%= submit_tag("Search", class:'aside-submit') %>
+      <% end %>
+    </div>
+    <div class="advertisement">
+    </div>
+</aside>

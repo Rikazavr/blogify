@@ -382,10 +382,10 @@ aside a{
 	width:300px;
 	height:60px;
 	margin-bottom:20px;
+	display:inline-block;
 }
 
 .popular-posts p{
-	display: inline-block;
 	margin-bottom: 5px;
 }
 
@@ -503,14 +503,12 @@ footer{
 	float: right;
 	width: 40px;
 	height: 40px;
-	background-color: #38b49d;
 	border-radius: 3px;
 	color: #fff;
 	display: inline-block;
 	text-align: center;
 	line-height: 40px;
 	text-decoration:none;
-	box-shadow: 0px 2px 0px rgba(0,153,153,1);
 }
 
 .icon{

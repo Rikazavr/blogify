@@ -1,21 +1,21 @@
 
 class PostsController < ApplicationController
   before_action :set_post, only: [:show, :edit, :update, :destroy]
-  before_action :sidebar, only: [:home, :by_tag, :by_category, :show]
+  before_action :sidebar, only: [:home, :by_tag, :by_category, :show, :search]
 
   def home
-    @posts = Post.all
+    @posts = Post.paginate(:page => params[:page])
     render 'home/index'
   end
 
   def by_tag
-    @posts = Tag.find_by(slug:params[:slug]).posts
+    @posts = Tag.find_by(slug:params[:slug]).posts.paginate(:page => params[:page])
     @tags = Tag.all
     render 'home/index'
   end
 
   def by_category
-    @posts = Category.find_by(slug:params[:slug]).posts
+    @posts = Category.find_by(slug:params[:slug]).posts.paginate(:page => params[:page])
     render 'home/index'
   end
 
@@ -24,6 +24,30 @@ class PostsController < ApplicationController
   def index
     @posts = Post.all
     render layout: 'admin'
+  end
+
+  def search
+    searching = params["q"].downcase
+    results = Post.where("LOWER(title) = ?", searching)
+    if results.length < 1
+      tags = Tag.where("LOWER(name) = ?", searching)
+      if tags.length > 0
+        results = tags[0].posts
+      else
+        cats = Category.where("LOWER(name) = ?", searching)
+        if cats.length > 0
+          results = cats[0].posts
+        end
+      end
+      results = Post.where("LOWER(title) LIKE '%#{searching}%' OR LOWER(text) LIKE '%#{searching}%'")
+    end
+    if results.length == 1
+      @post = results[0]
+      render 'posts/show'
+    else
+      @posts = results.paginate(:page => params[:page])
+      render 'home/index'
+    end
   end
 
   # GET /posts/1
@@ -106,6 +130,10 @@ class PostsController < ApplicationController
       @tags = Tag.all
       @categories = Category.all
       @pop = Post.all.order("view_count desc").limit(4)
+      @recent_comments = Comment.order("created_at desc").limit(4)
+
+      @tweets = TWITTER_CLIENT.user_timeline[0..2]
+
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

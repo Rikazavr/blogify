@@ -14,6 +14,7 @@ Blogify::Application.routes.draw do
 
   post "comments/create", to:"comments#create"
 
+  get "/search", to:"posts#search"
   resources :categories
   resources :posts
   resources :tags

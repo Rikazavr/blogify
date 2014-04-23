@@ -6,7 +6,10 @@
             <li><a href="#">ARCHIVE</a></li>
             <li><a href="#">CONTACT</a></li>
         </ul>
-        <form action="URL"><input class="search" placeholder="Search.." type="text"> <input class="submit" type="submit"></form>
+        <%= form_tag("/search", method: "get") do %>
+            <%= text_field_tag(:q, '',{ class:'search', placeholder: 'Search...' }) %>
+            <%= submit_tag("Search", class:'submit') %>
+        <% end %>
         <div class="unnamed"></div>
         </div>
 </nav>
