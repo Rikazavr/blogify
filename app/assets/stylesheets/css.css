@@ -396,8 +396,13 @@ aside a{
 
 .recent-comments{
 	margin-bottom:20px;
-	height:60px;
+	min-height:60px;
+	height: auto;
 	width:300px;
+}
+
+.twit{
+	margin-bottom: 20px;
 }
 
 .small-image{

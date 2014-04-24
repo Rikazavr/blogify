@@ -14,6 +14,8 @@ gem 'ckeditor'
 gem 'ancestry'
 gem 'will_paginate', '~> 3.0'
 gem 'twitter'
+gem 'devise'
+gem 'devise-i18n-views'
 
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'

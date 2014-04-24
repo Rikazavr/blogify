@@ -13,7 +13,7 @@
 <!-- ======================================================Dribble============================= -->
     <div class="dribble">
       <h2>Dribble</h2>
-      <a href="#"><%= image_tag("rocket.png", class:"middle-img") %></a>
+      <a href="https://dribbble.com"><%= image_tag("rocket.png", class:"middle-img") %></a>
     </div>
 <!-- ======================================================Twitter============================= -->
       <h2>Twitter</h2>
@@ -52,7 +52,16 @@
           <%= image_tag("dude.jpg", class:"small-image")%>
           <% end %>
           <p class="green"><%= rec.author %></p>
-          <p class="gray"><%= rec.comment %></p>
+          <% 
+
+            if rec.comment.length > 50
+              comment = rec.comment[0..40] + rec.comment[41..60].split(' ')[0] + '...'
+            else
+              comment = rec.comment
+            end
+
+           %>
+          <p class="gray"><%= comment %></p>
         </div>
       <% end %>
 <!-- ====================================================== tags ============================= -->

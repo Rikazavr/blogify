@@ -7,6 +7,11 @@
 </head>
 <body>
 
+<div>
+  Вы вошли как <%= current_user.email %>
+  <%= link_to 'Exit', destroy_user_session_path, method: :delete %>
+</div>
+
 <%= yield %>
 
 </body>

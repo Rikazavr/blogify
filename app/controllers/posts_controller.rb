@@ -2,6 +2,7 @@
 class PostsController < ApplicationController
   before_action :set_post, only: [:show, :edit, :update, :destroy]
   before_action :sidebar, only: [:home, :by_tag, :by_category, :show, :search]
+  before_action :authenticate_user!, only: [:index, :new, :create, :edit, :update, :destroy]
 
   def home
     @posts = Post.paginate(:page => params[:page])
@@ -38,8 +39,9 @@ class PostsController < ApplicationController
         if cats.length > 0
           results = cats[0].posts
         end
+        results = Post.where("LOWER(title) LIKE '%#{searching}%' OR LOWER(text) LIKE '%#{searching}%'")
       end
-      results = Post.where("LOWER(title) LIKE '%#{searching}%' OR LOWER(text) LIKE '%#{searching}%'")
+      
     end
     if results.length == 1
       @post = results[0]
