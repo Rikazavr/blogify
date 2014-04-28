@@ -22,10 +22,15 @@
         <%= link_to 'Read more', post, class:'more' %>
 		</div>
   <% end %>
-	<div class="quote-post"><p class="thin">Curabitur aliquam euismod purus, vela fermentum mattis. Nunc ac quam in est aliquet pretium. Integer semper, tortor ne mattis euismod, maecenas vitae lacus massa.</p><p>-- Salvador Dali</p>
-	</div>
-	<div class="link-post"><a href="#"><p class="gray">http://www.themeforest.net/user/SuitsTheme</p></a></div>
-
+  <% if @quote_post %>
+  <div class="quote-post">
+    <p class="thin"><%= @quote_post.quote %></p>
+    <p><%= '--' + @quote_post.author %></p>
+  </div>
+  <% end %>
+	<div class="link-post">
+    <a href="#"><p class="gray">http://www.themeforest.net/user/SuitsTheme</p></a>
+  </div>
 	<div class="pagination">
     <% if @posts.current_page == 1 %>
       <%= link_to '<=', "#", class: 'page-active' %>

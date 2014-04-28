@@ -2,6 +2,8 @@ Blogify::Application.routes.draw do
   
 
 
+  resources :quote_posts
+
   devise_for :users
   mount Ckeditor::Engine => '/ckeditor'
   get "post_types/new", to:"post_types#new"

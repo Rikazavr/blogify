@@ -9,5 +9,5 @@
   </p>
   <%= hidden_field_tag 'post_id', @post.id%>
   <%= hidden_field_tag 'parent_id', 0, id:'parent-comment-id' %>
-  <%= submit_tag 'post' %>
+  <%= submit_tag 'post', id: 'post-comment-button' %>
 <% end %>

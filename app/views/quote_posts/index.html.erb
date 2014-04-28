@@ -1,0 +1,29 @@
+<h1>Listing quote_posts</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Quote</th>
+      <th>Author</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @quote_posts.each do |quote_post| %>
+      <tr>
+        <td><%= quote_post.quote %></td>
+        <td><%= quote_post.author %></td>
+        <td><%= link_to 'Show', quote_post %></td>
+        <td><%= link_to 'Edit', edit_quote_post_path(quote_post) %></td>
+        <td><%= link_to 'Destroy', quote_post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Quote post', new_quote_post_path %>

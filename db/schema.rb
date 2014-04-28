@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140424071750) do
+ActiveRecord::Schema.define(version: 20140425111857) do
 
   create_table "cat_associations", force: true do |t|
     t.integer  "category_id"
@@ -83,6 +83,13 @@ ActiveRecord::Schema.define(version: 20140424071750) do
   end
 
   add_index "posts", ["post_type_id"], name: "index_posts_on_post_type_id"
+
+  create_table "quote_posts", force: true do |t|
+    t.text     "quote"
+    t.string   "author"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "tag_associations", force: true do |t|
     t.integer  "tag_id"

@@ -1,5 +1,5 @@
 <% if @comment.is_root? %>
-  $('#comments').append('<li data-id="<%= @comment.id %>"><%= @comment.author %>: <%= @comment.comment %><button class="answer-to-comment" data-id="<%= @comment.id %>" name="button" type="submit">Answer</button><ul class="nested-comment"></ul></li>');
+  $('#comments').append('<li data-id="<%= @comment.id %>"><span class="comment-author"><%= @comment.author %></span> <%= @comment.comment %><button class="answer-to-comment" data-id="<%= @comment.id %>" name="button" type="submit">Answer</button><ul class="nested-comment"></ul></li>');
 <% else %>
-  $('#comments li[data-id="<%= @comment.parent.id %>"] ul').append('<li data-id="<%= @comment.id %>"><%= @comment.author %>: <%= @comment.comment %><button class="answer-to-comment" data-id="<%= @comment.id %>" name="button" type="submit">Answer</button><ul class="nested-comment"></ul></li>');
+  $('#comments li[data-id="<%= @comment.parent.id %>"] ul').append('<li data-id="<%= @comment.id %>"><span class="comment-author"><%= @comment.author %></span> <%= @comment.comment %><button class="answer-to-comment" data-id="<%= @comment.id %>" name="button" type="submit">Answer</button><ul class="nested-comment"></ul></li>');
 <% end %>

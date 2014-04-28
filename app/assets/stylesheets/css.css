@@ -279,50 +279,6 @@ h2{
 	margin-top:40px;
 }
 
-#comments{
-	border:1px solid #cccccc;
-	height: auto;
-	padding: 30px 90px 30px 90px;
-	margin-top: -90px;
-}
-
-#comments ul,#comments li{
-	display: block;
-}
-
-#comment-form{
-	font-size: 16px;
-}
-
-.answer-to-comment{
-	width: 70px;
-	height: 25px;
-	line-height: 25px;
-	text-align: center;
-	border:none;
-	border-radius: 5px;
-	background-color: #fff;
-	font-size: 12px;
-	padding:0px;
-	margin: 10px;
-}
-
-.quote-post{
-	width: 720px;
-	height: 138px;
-	border-radius: 3px;
-	font-size: 24px;
-	padding: 90px 90px 90px 90px;
-	background-image:url(quote.png);
-	color:#fff;
-	margin-bottom: 100px;
-}
-
-.thin{
-	font-weight:300;
-	margin-bottom:20px;
-}
-
 .link-post{
 	height: 135px;
 	width: 900px;
@@ -410,8 +366,11 @@ aside a{
 	height: 60px;
 	border-radius: 3px;
 	margin-right:20px;
+	margin-top: 3px;
 	display:inline-block;
 	float:left;
+	background-position: 50%;
+	background-size: cover;
 }
 
 .tag{

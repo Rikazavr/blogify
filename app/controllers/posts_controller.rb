@@ -1,4 +1,3 @@
-
 class PostsController < ApplicationController
   before_action :set_post, only: [:show, :edit, :update, :destroy]
   before_action :sidebar, only: [:home, :by_tag, :by_category, :show, :search]
@@ -6,6 +5,8 @@ class PostsController < ApplicationController
 
   def home
     @posts = Post.paginate(:page => params[:page])
+    offset = rand(QuotePost.count)
+    @quote_post = QuotePost.first(offset: offset)
     render 'home/index'
   end
 

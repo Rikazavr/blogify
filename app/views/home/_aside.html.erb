@@ -25,14 +25,6 @@
           <%= link_to tweet.user.name, tweet.user.url.to_s %>
         </div>
       <% end %>
-<!--  <p class="gray">
-        What Are the Most Inspiring Envato Marketplace Moments of All Time? 
-        <a href="#">http://enva.to/15c3faP</a>
-      </p>
-      <p class="gray">
-        Our server maintenance is now done, so Envato Support should be working as normal now. If you see any problems please tweet 
-        <a href="#">@envato_support</a>
-      </p> -->
 <!-- ======================================================Pop posts============================= -->
     <h2>Popular posts</h2>
       <% @pop.each do |pop| %>
@@ -48,18 +40,16 @@
     <h2>Recent Comments</h2>
       <% @recent_comments.each do |rec| %>
         <div class="recent-comments">
-          <%= link_to '#' do %>
-          <%= image_tag("dude.jpg", class:"small-image")%>
+          <%= link_to rec.post do %>
+          <div style="background-image: url(<%= rec.post.image.url(:thumb) %>)" class="small-image"></div>
           <% end %>
           <p class="green"><%= rec.author %></p>
           <% 
-
             if rec.comment.length > 50
               comment = rec.comment[0..40] + rec.comment[41..60].split(' ')[0] + '...'
             else
               comment = rec.comment
             end
-
            %>
           <p class="gray"><%= comment %></p>
         </div>
