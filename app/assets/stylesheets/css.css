@@ -201,6 +201,7 @@ nav ul li:last-child:after{
 
 .post img{
 	width: 960px;
+	max-height: 500px;
 	border-radius: 3px;
 	margin-left: -120px;
 	margin-top:-50px;

@@ -5,9 +5,6 @@
   margin-top: -90px;
 }
 
-#comments li{
-}
-
 #comments ul,#comments li{
   display: block;
 }
@@ -16,6 +13,7 @@
   font-size: 16px;
   border: 1px solid black;
   padding: 10px;
+  padding: 30px 90px 30px 90px;
 }
 
 #comment-form p{
@@ -30,27 +28,50 @@
   margin-left: 10px;
 }
 
+.comment-author{
+  font-size: 18px;
+  font-weight: bold;
+  color: #38b49d;
+}
+
+// .comment-author:before{
+//   content: "\2192";
+//   color: #cccccc;
+//   font-size: 30px;
+// }
+
+.nested-comment:before{
+  content: "\2192";
+  color: #cccccc;
+  font-size: 30px;
+}
+
 #comment{
   border: none;
   width: 300px;
-  min-height: 300px;
+  min-height: 100px;
   margin-left: 10px;
 }
 
-/*input[name=commit]{
-  height: 40px;
-  width: 60px;
-}*/
-
 .answer-to-comment{
-  width: 70px;
+  width: auto;
+  height: 25px;
+  text-align: center;
+  border:none;
+  border-radius: 5px;
+  background-color: #fff;
+  padding:0px 7px 0px 7px;
+  margin: 10px;
+}
+
+#post-comment-button{
+  width: auto;
   height: 25px;
   line-height: 25px;
   text-align: center;
   border:none;
   border-radius: 5px;
   background-color: #fff;
-  font-size: 12px;
-  padding:0px;
+  padding:0px 7px 0px 7px;
   margin: 10px;
 }

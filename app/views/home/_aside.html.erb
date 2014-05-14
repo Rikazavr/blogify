@@ -30,7 +30,7 @@
       <% @pop.each do |pop| %>
         <div class="popular-posts">
           <%= link_to post_path(pop) do %>
-          <%= image_tag(pop.image.url(), class:"small-image")%>
+          <div style="background-image: url(<%= pop.image.url(:thumb) %>)" class="small-image"></div>
           <% end %>
           <p class="green"><%= l pop.date, :format => :long %></p>
           <p class="gray"><%= pop.title %></p>

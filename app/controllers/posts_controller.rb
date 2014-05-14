@@ -39,8 +39,9 @@ class PostsController < ApplicationController
         cats = Category.where("LOWER(name) = ?", searching)
         if cats.length > 0
           results = cats[0].posts
+        else
+          results = Post.where("LOWER(title) LIKE '%#{searching}%' OR LOWER(text) LIKE '%#{searching}%'")
         end
-        results = Post.where("LOWER(title) LIKE '%#{searching}%' OR LOWER(text) LIKE '%#{searching}%'")
       end
       
     end
